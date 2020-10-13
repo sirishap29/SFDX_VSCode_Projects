@@ -1,0 +1,35 @@
+<apex:page controller="VFPageConceptsDemoController">
+<script type="text/javascript">
+function callApexMethod(){
+alert('Hello');
+Visualforce.remoting.Manager.invokeAction('{!$RemoteAction.VFPageConceptsDemoController.remoteActionCall}','Siri','Deepika',
+                        function(res,evnt){
+                            alert(evnt.status);
+                            alert(res);
+                            document.getElementById('{!$Component.formId.OutId}').innerHTML = res;
+                            document.getElementById('{!$Component.formId.InId}').value = res;
+                        },
+            );
+
+
+}
+
+</script>
+
+<apex:form id="formId">
+
+ <apex:outputText id="OutId" value="test123"/>
+ <apex:inputText id="InId"/>
+<!-- 
+  <apex:pageMessages />   
+        <apex:commandButton value="Navigate to Record" action="{!navigateToAccountView1}"/>
+        <apex:commandButton value="Navigate to VF Page" action="{!navigateToAccountView2}"/>
+        <apex:commandButton value="Navigate with parameters" action="{!navigateToAccountView3}"/>
+        
+        <apex:commandButton value="Display message" action="{!displayMessage}" reRender="formId"/> 
+ -->                            
+        <apex:commandButton value="Call Apex Method" onclick="callApexMethod()" reRender="formId"/>
+
+</apex:form>
+
+</apex:page>

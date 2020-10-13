@@ -1,0 +1,72 @@
+<aura:component controller="DisplayBranchClassController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="branchList" type="HBranch__c"/> 
+    <aura:attribute name="branchList1" type="HBranch__c"/>
+    <aura:attribute name="types" type="string[]" />
+    <aura:attribute name="ids" type="id[]" />
+    <aura:attribute name="idx" type="integer" default="{!v.types.legth}"/>
+    <aura:attribute name="recordId" type="Id"/>
+    <!--  <aura:attribute name -->
+    <aura:handler name="init" value="{!this}" Action="{!c.doInit}" />
+    
+    <h1>Do init witout parameter</h1>
+    
+       <table border="1" class="slds-table">
+        <thead>
+            <tr style="height:30;">
+                <td>Branch Name</td>
+                <td>Hospital</td>
+                <td>Custom Account</td>
+                <td>No.of Beds</td>
+                <td>Type</td>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.branchList}" var="branch" indexVar="idx">
+            <tr style="height:30;">
+                <td>{!branch.Name}</td>
+                <td>{!branch.Hospital__r.Name}</td>
+                <td>{!branch.Custom_Account__r.Name}</td>
+                <td>{!branch.No_of_Beds__c}</td>
+                <td>{!branch.Type__c}</td>
+  <!--                  <aura:iteration items="{!v.types}" var="t" indexVar="i=0">
+                            <aura:if isTrue="{!v.ids.length > idx}" >
+                            <option value="{!idx-1}">
+                            {!t}
+                                     </option>
+                           </aura:if>  
+                         </aura:iteration> -->
+                    
+            </tr>
+                  </aura:iteration>
+        </tbody>
+    </table> 
+    
+ <h1>Hospital with Branches on button action with parameter</h1>
+    <lightning:button label="Display Hospital Data" onclick="{!c.accessButtonClicked}"/>
+    
+    <table class="slds-table">
+        <thead>
+            <tr style="height:30;">
+                <td>Branch Name</td>
+                <td>Hospital</td>
+                <td>Custom Account</td>
+                <td>No.of Beds</td>
+                <td>Type</td>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.branchList1}" var="branch">
+            <tr style="height:30;">
+                <td>{!branch.Name}</td>
+                <td>{!branch.Hospital__r.Name}</td>
+                <td>{!branch.Custom_Account__r.Name}</td>
+                <td>{!branch.No_of_Beds__c}</td>
+                <td>{!type__c}</td>
+            </tr>
+                </aura:iteration>
+        </tbody>
+    </table>
+    
+</aura:component>

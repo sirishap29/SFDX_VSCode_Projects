@@ -1,0 +1,8 @@
+<aura:component controller="CommunicationCompController">
+    <!-- component Event Register-->
+    <aura:registerEvent name="cmpEvntDemo" type="c:ComponentEventDemo"/>
+    
+    <lightning:button label="Get Branches" onclick="{!c.getBranchesBtnClicked}"/>   
+    
+    <aura:handler event="c:ApplicationEventDemo" action="{!c.appEvntDemoHandler}"/>
+</aura:component>

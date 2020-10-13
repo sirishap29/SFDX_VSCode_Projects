@@ -1,0 +1,36 @@
+<aura:component controller="ContactDatatableController"
+                  implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >               
+    <aura:attribute name="conList" type="List"/>
+    <aura:attribute name="headersList" type="List"/>
+    <aura:attribute name="selectedContacts" type="List"/>
+    
+    <aura:attribute name="pageSize" type="String" default="5"/>
+    <aura:attribute name="pageNumber" type="String" default=""/>
+     <aura:attribute name="length" type="string" default=""/>
+    <aura:attribute name="conListTemp" type="List"/>
+    <aura:attribute name="pSize" type="string" default=""/>
+    <aura:attribute name="pageSizeList" type="List" default="5,10,20,50"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.pSize}" action="{!c.onChangeClicked}" />
+     <div width="80%" align="left" style="padding-left:600px;padding-right:600px">
+    <lightning:select aura:id="pageSize" name="pageSize" label="Page Size" value="{!v.pSize}" onchange="{!c.onChangeClicked}">
+    <option value=""></option>
+        <aura:iteration items="{!v.pageSizeList}" var="size">
+        <option value="{!size}">{!size}</option>
+        </aura:iteration>
+    </lightning:select>
+    </div>
+                      
+    <lightning:button label="First" onclick="{!c.FirstClicked}" disabled=""/>
+    <lightning:button label="Previous" onclick="{!c.PreviousClicked}" disabled=""/>
+    <lightning:button label="Next" onclick="{!c.NextClicked}" disabled=""/>
+    <lightning:button label="Last" onclick="{!c.LastClicked}" disabled=""/>
+     {!v.conListTemp.length}
+    <lightning:datatable data="{!v.conListTemp}" columns="{!v.headersList}" keyField="id" 
+                         hideCheckboxColumn="false" 
+                         selectedRows="{!v.selectedContacts}" 
+                         maxRowSelection="5" 
+                         onrowselection="{!c.onRowSelected}"/>
+    <lightning:button label="Get Selected Records" onclick="{!c.btnClicked}"/>
+</aura:component>

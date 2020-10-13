@@ -1,0 +1,24 @@
+<apex:page >
+    {"Name":"Siri"}
+    {"EmpNames":['Shree','Mahee','ShreeMahi']}
+    {"Salaries":[10000,12000,15000]}
+    {"Acoount":{"Name":"Wipro","Industry":"Consulting","Phone":"3147573917"}}
+    {"Accounts":[
+                {"Name":"FRB","Industry":"Banking","Phone":"3147573917"},
+                {"Name":"FRB1","Industry":"Banking","Phone":"3147573917"},
+                {"Name":"FRB2","Industry":"Banking","Phone":"3147573917"}
+                ]}
+    
+    Wrapper Class:
+    
+    public class Invoice_details{
+           public account acc;
+           public contact con;
+           public boolean flag;
+    }
+    
+    {"Invoice":{
+                "flag":True,"acc":{"Name":"FRB","Industry":"Banking","Phone":"5103971824"},
+                "con":{"lastName":"Reddy","firstName":"Sirisha"}
+               }}
+</apex:page>

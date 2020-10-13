@@ -1,0 +1,36 @@
+<aura:component controller="PatientAppointmentController">
+               
+    <aura:attribute name="patient" type="Id" />
+    <aura:attribute name="isShow" type="boolean" default=""/>
+    <aura:attribute name="appList" type="Appointment__c"/>
+    
+    <aura:method name="getAppointments" action="{!c.getAppointments}" access="global">
+        <aura:attribute name="patientId" type="Id" default=""/>
+    </aura:method>
+    
+  <!--   <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    
+    <aura:handler name="change" value="{!v.patient}" action="{!c.onPatientChange}"/>
+    
+    
+           <lightning:button label="Get Appointments" onclick="{!c.onButtonClicked}"/> -->
+        <table class="slds-table">
+        <thead>
+            <tr style="height:30;">
+               
+                <td>Appmnt ID</td>
+                <td>Appointment Name</td>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.appList}" var="appt">
+            <tr style="height:30;">
+                
+                <td>{!appt.Id}</td>
+                <td>{!appt.Name}</td>
+            </tr>
+                </aura:iteration>
+        </tbody>
+    </table>
+	
+</aura:component>

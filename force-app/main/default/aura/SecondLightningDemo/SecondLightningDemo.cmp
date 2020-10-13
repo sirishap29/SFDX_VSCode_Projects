@@ -1,0 +1,59 @@
+<aura:component implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+  <aura:attribute Name="accName" type="String" default="" access="global" description=""/>
+  <aura:attribute Name="Activationdate" type="date" access="global" description=""/>
+  <aura:attribute name="rating" type="string"  access="global" description=""/>
+  
+    <!-- PickList for Rating-->
+    <aura:attribute name="ratinglist" type="List" default="Hot,Warm,Cold" access="global" description=""/>
+   <!-- PickList for rating multi select
+      <aura:handler name="init" value="{!this}" action="{!c.ratingChange}"/> -->
+    <aura:attribute name="typeList" type="List" access="global" 
+                    default="[
+                             {label:'Customer',value:'Customer'},
+                             {label:'Customer-Direct',value:'Customer-Direct'},
+                             {label:'Prospect',value:'Prospect'}]"/>
+    <aura:attribute name="selectedTypes" type="List" access="global"/>
+    Account Name:{!v.accName} - {!v.rating}
+    
+                             
+    
+    <div width="50%" align="left" style="padding-left:100px;padding-right:1000px">
+      <lightning:input aura:id="Account Name" type="text" label="AccountName" value="{!v.accName}"/>
+      <lightning:input type="date" label="Activationdate" value="{!v.Activationdate}"/>
+      <lightning:input type="password" label="securitycode" value="{!v.securitycode}"/>
+      <lightning:input type="checkbox" label="Active" value="{!v.Active}" 
+                       disabled="{!or(v.accName=='',v.accName=='ANG Infotech')}"/> 
+      
+      <!-- PickList -->  
+      <lightning:select label="Rating" value="{!v.rating}" >
+          <option value="">select</option> 
+          <aura:iteration items="{!v.ratinglist}" var="r">
+              <option value="{!r}">{!r}</option>
+          </aura:iteration>
+        </lightning:select>
+         </div> 
+      <!-- Multi Picklist -->
+    <div width="70%" align="center" style="padding-left:30px;padding-right:30px">
+      <lightning:dualListbox label="type" sourceLabel="Available Types" 
+                             selectedLabel="Selected Types" 
+                             options="{!v.typeList}"
+                             value="{!v.selectedTypes}"/>
+      <aura:if isTrue="{!v.selectedTypes.length > 0}">
+          Selected Types
+          <aura:iteration items="{!v.selectedTypes}" var="r">
+              <option value="{!r}">{!r}</option>
+          </aura:iteration>
+      <!--    <aura:set attribute="else">      
+          </aura:set> -->                     
+        </aura:if> 
+        </div>
+        
+     <!-- Button -->
+        <lightning:button label="Submit" variant="neutral" onclick="{!c.onSubmit}" />
+        <lightning:button label="Submit" variant="brand" disabled=""/>
+        <lightning:button label="Submit" variant="success" />
+        <lightning:button label="Submit" variant="destructive" />
+        
+        <div style="display:none;" data-myName="Sirisha" data-age="35" onclick="">Maheeeeee</div>
+                      
+</aura:component>

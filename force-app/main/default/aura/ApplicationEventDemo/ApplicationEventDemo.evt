@@ -1,0 +1,6 @@
+<aura:event type="APPLICATION" description="Event template">
+    <aura:attribute name="Name" type="string" />
+    <aura:attribute name="branchList" type="List" />
+    <aura:attribute name="parentType" type="string"/>
+
+</aura:event>

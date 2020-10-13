@@ -1,0 +1,22 @@
+<apex:page showHeader="false" sidebar="false" controller="RegistrationDisplayVFController">
+<apex:form >
+<apex:pageBlock title="Registrations" mode="View">
+<apex:pageBlockButtons >
+<apex:commandButton value="Invite Patient" action="{!createPatient}"/>
+</apex:pageBlockButtons>
+<apex:pageBlockTable value="{!WrapperRegLst}" var="Wrapreg"> 
+ <apex:column >
+    <apex:facet name="header">
+       <apex:inputCheckbox onclick="selectAllCheckboxes(this,'inputId')"/>
+          </apex:facet>
+            <apex:inputCheckbox value="{!Wrapreg.selected}" id="inputId"/>
+                </apex:column>
+<apex:column value="{!Wrapreg.reg.name}"/>
+<apex:column value="{!Wrapreg.reg.Parent_HBranch__c}"/>
+<apex:column value="{!Wrapreg.reg.Parent_Hospital__c}"/>
+<apex:column value="{!Wrapreg.reg.Parent_Physician__c}"/>
+
+</apex:pageBlockTable>
+</apex:pageBlock>
+</apex:form> 
+</apex:page>

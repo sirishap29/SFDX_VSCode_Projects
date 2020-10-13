@@ -1,0 +1,50 @@
+<apex:page showHeader="false" sidebar="false" docType="html-5.0" controller="FirstVFpageDemoController">
+<script>
+function getJavascriptMethod(){
+alert('Hi');
+ return true;
+}
+
+</script>
+<style>
+.labelCls{
+            color:green;
+        }
+</style>
+
+    <apex:form >
+        
+        <apex:inputText label="Name" value="{!Name}"/><br/>
+        <apex:commandButton value="Submit" onclick="getJavascriptMethod();" action="{!submitClicked}" /><br/><br/>
+        
+        {!OutputVal}
+        <apex:selectList multiselect="false" size="1" value="{!selectedState}">
+        <apex:selectOptions value="{!stateList}" rendered="true"/> 
+        </apex:selectList><br/><br/> 
+        
+        <apex:selectList multiselect="false" size="1" value="{!selectedRating}">
+          <apex:selectOptions value="{!ratinglist}"/>
+        </apex:selectList>
+        
+        <apex:selectList multiselect="false" size="1" value="{!selectedType}">
+          <apex:selectOptions value="{!typelist}"/>
+        </apex:selectList>  
+        
+     <div style="margin-top:100px;margin-left:50px;">    
+        <apex:selectList multiselect="false" size="1">
+          <apex:selectOption itemValue="Telangana" itemLabel="TS"/>
+          <apex:selectOption itemValue="Andhra Pradesh" itemLabel="AP"/>
+      </apex:selectList>
+      
+        <apex:selectCheckboxes >
+          <apex:selectOption itemValue="Telangana" itemLabel="TS"/>
+          <apex:selectOption itemValue="Andhra Pradesh" itemLabel="AP"/>
+      </apex:selectCheckboxes>
+      
+       <apex:commandLink value="Click here"/>
+      
+      <apex:outputLabel styleClass="labelCls">output label</apex:outputLabel>
+        
+    </div>
+    </apex:form>
+</apex:page>

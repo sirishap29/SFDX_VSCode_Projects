@@ -1,0 +1,9 @@
+<aura:component >
+
+    
+    <aura:handler name="cmpEvntDemo" event="c:ComponentEventDemo" action="{!c.EventExecutedMethod}"/>
+    
+    <c:ChildComponent1/>
+    <c:ChildComponent2/>
+    
+</aura:component>

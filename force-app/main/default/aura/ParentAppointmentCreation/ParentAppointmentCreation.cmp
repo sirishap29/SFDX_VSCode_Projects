@@ -1,0 +1,53 @@
+<aura:component controller="AppointmentLightningController">
+    
+    <aura:attribute name="isShow" type="Boolean" Default="false"/>
+    <lightning:button label="New Appointment" onclick="{!c.onNewAppointmentButtonClicked}"/>
+   
+    
+    <aura:attribute name="appmtName" type="Appointment__c" />
+    <aura:attribute name="patList" type="List" />
+    <aura:attribute name="patientId" type="Id"  />
+    <aura:attribute name="phyList" type="List" />
+    <aura:attribute name="physicianId" type="Id" />
+    <aura:attribute name="hospList" type="List" />
+    <aura:attribute name="hospitalId" type="Id" />
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+    <aura:handler name="change" value="{!v.patient}" action="{!c.onPatientChange}"/>
+    <aura:handler name="change" value="{!v.physician}" action="{!c.onPhysicianChange}"/>
+    <aura:handler name="change" value="{!v.hospital}" action="{!c.onHospitalChange}"/>   
+  <aura:if isTrue="{!v.isShow}">  
+    <div width="100%" align="left" style="padding-left:500px;padding-right:500px" >
+        <lightning:input aura:id="appmtName" type="text" label="Appointment Name" value="{!v.appmtName}" />
+        <lightning:select aura:id="patientId" name="patientId" label="Parent Patient" class="dynamic" value="{!v.patientId}" onchange="{!c.onPatientChange}">
+            <option value="">Select</option>
+            <aura:iteration items="{!v.patList}" var="pat">
+                <option text="{!pat.Name}" value="{!pat.Id}"/>
+            </aura:iteration>
+        </lightning:select>
+        
+        <lightning:select aura:id="physicianId" label="Parent Physician" value="{!v.physicianId}" onchange="{!c.onPhysicianChange}">
+            <option value="">Select</option>
+            <aura:iteration items="{!v.phyList}" var="phy">
+                <option text="{!phy.Name}" value="{!phy.Id}"/>
+            </aura:iteration>
+        </lightning:select>
+        
+        <lightning:select aura:id="hospitalId" label="Parent Hospital" value="{!v.hospitalId}" onchange="{!c.onHospitalChange}">
+           <option value="">Select</option>
+            <aura:iteration items="{!v.hospList}" var="hosp">
+                <option text="{!hosp.Name}" value="{!hosp.Id}"/> 
+            </aura:iteration>
+        </lightning:select>
+        
+        
+        <lightning:button label="Create Appointment" onclick="{!c.createButtonAppointment}" />
+        
+    </div>
+    
+ </aura:if>
+    
+    <c:ChildDisplayAppointments isShow="{!v.isShow}" aura:id="getAppointments"/>   
+	
+
+</aura:component>

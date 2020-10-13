@@ -1,0 +1,73 @@
+<apex:page controller="RegistrationVFController" showHeader="false" sidebar="false">
+ <apex:form >
+ 
+ <apex:outputPanel rendered="{!isNew}">
+ <apex:pageBlock title="Registration Form">
+ <apex:pageBlockButtons >
+ <apex:commandButton value="Save Registration" action="{!saveRegistration}"/>
+ </apex:pageBlockButtons>
+ <apex:pageBlockSection collapsible="true" columns="2" title="Registration PickList">
+ 
+ 
+ <apex:selectList multiselect="false" size="1" value="{!selectedHosp}">
+  Hospital: <apex:selectOption itemLabel="Select" itemValue="Hospital"/>
+ <apex:selectOptions value="{!hospList}"/>
+ <apex:actionSupport event="onchange" action="{!getBranches}"/>
+ </apex:selectList>
+ 
+ <apex:selectList multiselect="false" size="1" value="{!selectedBranch}">
+  Branch: 
+ <apex:selectOptions value="{!branchList}"/>
+ </apex:selectList>
+ 
+ <apex:selectList multiselect="false" size="1" value="{!selectedPhysician}">
+  Physician:
+ <apex:selectOptions value="{!phyList}"/>
+ </apex:selectList>
+ </apex:pageBlockSection>
+ <apex:pageBlockSection collapsible="true" columns="2" title="Registration Input">
+ <apex:inputField value="{!reg.Name}"/>
+ <apex:inputField value="{!reg.DOB__c}"/>
+ <apex:inputField value="{!reg.Appointment_Date__c}"/>
+ 
+ </apex:pageBlockSection>
+ </apex:pageBlock>
+ </apex:outputPanel>
+ 
+ <apex:outputPanel rendered="{!isView}">
+ <apex:pageBlock title="Registration View Page">
+ <apex:pageBlockButtons >
+ <apex:commandButton value="Edit" action="{!editClicked}"/>
+ <apex:commandButton value="Delete" action="{!deleteClicked}"/>
+ </apex:pageBlockButtons>
+ <apex:pageBlockSection columns="2" collapsible="true" title="Registration Details">
+ <apex:outputField value="{!reg.Name}"/>
+ <apex:outputField value="{!reg.DOB__c}"/>
+ <apex:outputField value="{!reg.Appointment_Date__c}"/>
+ <apex:outputField value="{!reg.Parent_Hospital__c}"/>
+ <apex:outputField value="{!reg.Parent_HBranch__c}"/>
+ <apex:outputField value="{!reg.Parent_Physician__c}"/> 
+ 
+ </apex:pageBlockSection>
+ </apex:pageBlock>
+ </apex:outputPanel>
+ 
+ <apex:outputPanel rendered="{!isEdit}">
+ <apex:pageBlock title="Registration View Page">
+ <apex:pageBlockButtons >
+ <apex:commandButton value="Save" action="{!saveClicked}"/>
+ <apex:commandButton value="Cancel" action="{!cancelClicked}"/>
+ </apex:pageBlockButtons>
+ <apex:pageBlockSection columns="2" collapsible="true" title="Registration Details">
+ <apex:inputField value="{!reg.Name}"/>
+ <apex:inputField value="{!reg.DOB__c}"/>
+ <apex:inputField value="{!reg.Appointment_Date__c}"/>
+ <apex:inputField value="{!reg.Parent_Hospital__c}"/>
+ <apex:inputField value="{!reg.Parent_HBranch__c}"/>
+ <apex:inputField value="{!reg.Parent_Physician__c}"/> 
+ 
+ </apex:pageBlockSection>
+ </apex:pageBlock>
+ </apex:outputPanel>
+ </apex:form>
+</apex:page>

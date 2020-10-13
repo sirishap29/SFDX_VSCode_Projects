@@ -1,0 +1,41 @@
+<aura:component controller="PatientAppointmentController"
+                implements="force:appHostable,flexipage:availableForAllPageTypes,flexipage:availableForRecordHome,force:hasRecordId,forceCommunity:availableForAllPageTypes,force:lightningQuickAction" access="global" >
+	
+    <aura:attribute name="patient" type="Id" />
+    <aura:attribute name="patientList" type="List" />
+    <aura:attribute name="appList" type="Appointment__c"/>
+    
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:handler name="change" value="{!v.patient}" action="{!c.onPatientChange}"/>
+    
+    <div width="80%" align="left" style="padding-left:500px;padding-right:500px">
+    <lightning:select aura:id="patId" name="patient" label="Patient Name" value="{!v.patient}" onchange="{!c.onPatientChange}">
+            <option value="">Select</option>
+        <aura:iteration items="{!v.patientList}" var="pat">
+            <option text="{!pat.Name}" value="{!pat.Id}"/>
+        </aura:iteration>
+    </lightning:select>  
+            </div>
+      <!--      <lightning:button label="Get Appointments" onclick="{!c.onButtonClicked}"/> -->
+        <table class="slds-table">
+        <thead>
+            <tr style="height:30;">
+               
+                <td>Appmnt ID</td>
+                <td>Appointment Name</td>
+            </tr>
+        </thead>
+        <tbody>
+            <aura:iteration items="{!v.appList}" var="appt">
+            <tr style="height:30;">
+                
+                <td>{!appt.Id}</td>
+                <td>{!appt.Name}</td>
+            </tr>
+                </aura:iteration>
+        </tbody>
+    </table>
+    
+   
+        
+</aura:component>

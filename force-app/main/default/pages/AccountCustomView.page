@@ -1,0 +1,45 @@
+<apex:page showHeader="false" sidebar="false" controller="AccountViewCustomController">
+
+<script>
+function submitClick(){
+alert('Hi');
+callApexClass();
+}
+</script>
+
+<apex:form id="formId">
+<apex:outputPanel >
+<apex:pageBlock title="Account Detail" mode="view">
+<apex:pageBlockSection columns="2" collapsible="true" title="Detail">
+<apex:inputField value="{!acc.Name}"/>
+<apex:inputField value="{!acc.Rating}"/>
+<apex:inputField value="{!acc.Type}"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection columns="2" collapsible="false" title="Billing Address">
+<apex:inputField value="{!acc.BillingStreet}"/>
+<apex:inputField value="{!acc.BillingState}"/>
+<apex:inputField value="{!acc.BillingCity}"/>
+</apex:pageBlockSection>
+</apex:pageBlock>
+</apex:outputPanel>
+{!accName}
+
+<apex:commandButton value="Submit" onclick="submitClick()" reRender="outputId"/>
+
+<apex:selectList multiselect="false" size="1" value="{!selectedState}">
+<apex:selectOption itemValue="Telangana" itemLabel="TS"/>
+<apex:selectOption itemValue="Andhrapradesh" itemLabel="AP"/>
+<apex:selectOption itemValue="Madhyapradesh" itemLabel="MP"/>
+<apex:actionSupport event="onchange" action="{!stateChange}" reRender="outputId"/>
+</apex:selectList>
+
+<apex:actionFunction name="callApexClass" action="{!actionFunctionMethod}" reRender="formId"/>
+<apex:actionPoller action="{!actionPollerMethod}" interval="30" reRender="outputId"/>
+
+<apex:outputPanel id="outputId">
+Selected State: {!accName}<br/><br/>
+</apex:outputPanel>
+
+</apex:form>
+  
+</apex:page>

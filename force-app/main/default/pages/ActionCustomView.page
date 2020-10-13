@@ -1,0 +1,32 @@
+<apex:page showHeader="false" sidebar="false" controller="ActionCustomViewController">
+
+<apex:form >
+<apex:outputPanel >
+<apex:pageBlock title="Account Opportunity Create Form" mode="edit">
+<apex:pageBlockButtons >
+<apex:commandButton value="Save Details" action="{!SaveDetails}"/>
+</apex:pageBlockButtons>
+<apex:pageBlockSection title="Account Details" columns="2" collapsible="true" >
+<apex:inputField value="{!acc.Name}"/>
+<apex:inputField value="{!acc.Type}"/>
+<apex:inputField value="{!acc.Rating}"/>
+<apex:inputField value="{!acc.BillingStreet}"/>
+<apex:inputField value="{!acc.BillingState}"/>
+<apex:inputField value="{!acc.BillingCity}"/>
+</apex:pageBlockSection>
+<apex:pageBlockSection title="Opportunity Details" columns="2" collapsible="true">
+<apex:inputField value="{!opp.Name}"/>
+<apex:inputField value="{!opp.StageName}"/>
+<apex:inputField value="{!opp.LeadSource}"/>
+<apex:inputField value="{!opp.Type}"/>
+<apex:inputField value="{!opp.Amount}"/>
+<apex:inputField value="{!opp.CloseDate}"/>
+</apex:pageBlockSection>
+
+</apex:pageBlock>
+</apex:outputPanel>
+
+
+</apex:form>
+ 
+</apex:page>

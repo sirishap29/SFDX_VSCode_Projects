@@ -1,0 +1,7 @@
+<aura:component >
+    
+    <aura:registerEvent name="appEvntDemo" type="c:ApplicationEventDemo" />
+    
+    <lightning:button label="Child2 Button" onclick="{!c.callChild1MethodClicked}"/>
+	
+</aura:component>
