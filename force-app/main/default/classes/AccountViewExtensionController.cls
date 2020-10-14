@@ -9,7 +9,7 @@ public class AccountViewExtensionController {
         isEdit = false;
         isView = true;
     }
-
+// add comments
     public void editClicked(){
         isEdit = true;
         isView = false;
