@@ -1,5 +1,5 @@
 <aura:component controller="PatientAppointmentController">
-               
+   <!--Lightning component for Patient Appointment-->            
     <aura:attribute name="patient" type="Id" />
     <aura:attribute name="isShow" type="boolean" default=""/>
     <aura:attribute name="appList" type="Appointment__c"/>

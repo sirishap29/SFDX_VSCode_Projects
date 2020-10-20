@@ -1,4 +1,5 @@
 <aura:component controller="CommunicationCompController">
+    <!--Event Handler Lightning Component-->
     <!-- component Event Register-->
     <aura:registerEvent name="cmpEvntDemo" type="c:ComponentEventDemo"/>
     
