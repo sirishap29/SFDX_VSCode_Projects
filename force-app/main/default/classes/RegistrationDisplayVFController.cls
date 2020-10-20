@@ -1,7 +1,7 @@
 public class RegistrationDisplayVFController {
     
     public List<wrapperRegistration> WrapperRegLst{get;set;}
-    
+   //Publicmethod for Registration Wrapperclass 
     public RegistrationDisplayVFController(){
         if(WrapperRegLst == NULL){
          WrapperRegLst = new List<wrapperRegistration>();
